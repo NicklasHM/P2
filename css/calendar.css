@@ -1,0 +1,334 @@
+/* Calendar Styling */
+
+.calendar-container {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-nav button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.calendar-nav button:hover {
+  background-color: #f5f5f5;
+}
+
+.machine-selector {
+  display: flex;
+  align-items: center;
+}
+
+.machine-selector label {
+  margin-right: 10px;
+}
+
+.machine-selector select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  min-width: 180px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.machine-selector select:focus {
+  outline: none;
+  border-color: #1e88e5;
+  box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.25);
+}
+
+.machine-selector select option {
+  padding: 6px;
+}
+
+.machine-selector select option:checked {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  font-weight: 500;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+  background-color: #f8f8f8;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 1px;
+  background-color: #eee;
+}
+
+.calendar-day {
+  position: relative;
+  min-height: 100px;
+  background-color: #fff;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.calendar-day.empty {
+  background-color: #f9f9f9;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.day-bookings {
+  margin-top: 5px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.add-booking-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.add-booking-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Booking Modal */
+.booking-time-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.booking-modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-booking-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.booking-form-container {
+  margin-top: 15px;
+}
+
+.booking-form-group {
+  margin-bottom: 15px;
+}
+
+.booking-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: medium;
+}
+
+.booking-form-group input,
+.booking-form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.booking-form-group textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.booking-form-group input[type="date"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: inherit;
+}
+
+.booking-form-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Booking Items - Calendar View */
+.booking-item {
+  font-size: 0.8rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+.booking-item:hover {
+  background-color: #bbdefb;
+}
+
+.booking-item .booking-project {
+  display: block;
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+}
+
+.booking-item.service {
+  background-color: #ffecb3;
+  border-left: 3px solid #ffa000;
+}
+
+.booking-item.service:hover {
+  background-color: #ffe082;
+}
+
+/* Flerdagesbookinger */
+.booking-item.multiday {
+  background-color: #dcedc8;
+  border-left: 3px solid #7cb342;
+  position: relative;
+}
+
+.booking-item.multiday:hover {
+  background-color: #c5e1a5;
+}
+
+.booking-item.multiday::after {
+  content: "↔";
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 14px;
+  color: #7cb342;
+}
+
+.booking-item.multiday.service {
+  background-color: #ffe0b2;
+  border-left: 3px solid #ff9800;
+}
+
+.booking-item.multiday.service:hover {
+  background-color: #ffcc80;
+}
+
+/* Styling for maskinbooking listevisning */
+.machine-bookings li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.machine-bookings li.multiday-booking {
+  background-color: #dcedc8;
+  border-left: 3px solid #7cb342;
+}
+
+.machine-bookings .booking-date {
+  font-weight: 500;
+}
+
+.machine-bookings .days-count {
+  color: #7cb342;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.machine-bookings .booking-time {
+  color: #555;
+  margin-left: 10px;
+}
+
+/* Responsive Calendar */
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .machine-selector {
+    margin-top: 10px;
+  }
+
+  .calendar-day {
+    min-height: 80px;
+  }
+
+  .booking-modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+}
+
+.multiday-indicator {
+  display: block;
+  font-size: 10px;
+  color: #7cb342;
+  margin-top: 2px;
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marine Service - Projektstyring</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="main-nav">
+          <div class="logo">
+            <h1>Projekt Manager</h1>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="#" class="active" data-page="nye-projekter"
+                >Nye Projekter</a
+              >
+            </li>
+            <li><a href="#" data-page="projektoversigt">Projektoversigt</a></li>
+            <li>
+              <a href="#" data-page="afsluttede-projekter"
+                >Afsluttede Projekter</a
+              >
+            </li>
+            <li>
+              <a href="#" data-page="medarbejderoversigt"
+                >Medarbejderoversigt</a
+              >
+            </li>
+            <li><a href="#" data-page="maskinbooking">Maskinbooking</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Nye Projekter -->
+        <section id="nye-projekter" class="page active">
+          <h2>Nye Projekter</h2>
+          <div class="import-section">
+            <button id="import-btn" class="primary-btn">
+              Importér fra Business Central
+            </button>
+          </div>
+          <div class="projects-list">
+            <!-- Projekter vil blive indsat her via JavaScript -->
+          </div>
+        </section>
+
+        <!-- Projektoversigt -->
+        <section id="projektoversigt" class="page">
+          <h2>Projektoversigt</h2>
+          <div class="filter-section">
+            <button class="filter-btn active" data-filter="all">Alle</button>
+            <button class="filter-btn" data-filter="ongoing">
+              Igangværende
+            </button>
+            <button class="filter-btn" data-filter="not-started">
+              Ikke påbegyndt
+            </button>
+          </div>
+          <div class="projects-grid">
+            <!-- Projekter vil blive indsat her via JavaScript -->
+          </div>
+        </section>
+
+        <!-- Afsluttede Projekter -->
+        <section id="afsluttede-projekter" class="page">
+          <h2>Afsluttede Projekter</h2>
+          <div class="projects-grid">
+            <!-- Projekter vil blive indsat her via JavaScript -->
+          </div>
+        </section>
+
+        <!-- Medarbejderoversigt -->
+        <section id="medarbejderoversigt" class="page">
+          <h2>Medarbejderoversigt</h2>
+          <div class="add-employee-section">
+            <button id="add-employee-btn" class="primary-btn">
+              Tilføj ny medarbejder
+            </button>
+          </div>
+          <div class="employees-grid">
+            <!-- Medarbejdere vil blive indsat her via JavaScript -->
+          </div>
+        </section>
+
+        <!-- Maskinbooking -->
+        <section id="maskinbooking" class="page">
+          <h2>Maskinbooking</h2>
+          <div class="add-machine-section">
+            <button id="add-machine-btn" class="primary-btn">
+              Tilføj ny maskine
+            </button>
+          </div>
+          <div class="machines-grid">
+            <!-- Maskiner vil blive indsat her via JavaScript -->
+          </div>
+          <div id="booking-calendar" class="calendar-container">
+            <!-- Kalenderen vil blive indsat her via JavaScript -->
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2025 Marine Service - Projekt Manager</p>
+      </footer>
+    </div>
+
+    <!-- Modaler -->
+    <div id="project-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Projektdetaljer</h3>
+        <div class="project-details">
+          <!-- Projektdetaljer vil blive indsat her via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <div id="employee-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Medarbejderdetaljer</h3>
+        <div class="employee-details">
+          <!-- Medarbejderdetaljer vil blive indsat her via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <div id="machine-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Maskindetaljer</h3>
+        <div class="machine-details">
+          <!-- Maskindetaljer vil blive indsat her via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <div id="add-machine-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Tilføj ny maskine</h3>
+        <div class="add-machine-form">
+          <div class="form-group">
+            <label for="new-machine-name">Maskinnavn</label>
+            <input
+              type="text"
+              id="new-machine-name"
+              placeholder="Indtast navn på den nye maskine"
+            />
+          </div>
+          <div class="form-group">
+            <label for="new-machine-type">Type</label>
+            <input
+              type="text"
+              id="new-machine-type"
+              placeholder="Indtast type/specifikation"
+            />
+          </div>
+          <div class="form-group">
+            <label for="new-machine-color">Farve</label>
+            <input type="color" id="new-machine-color" value="#3498db" />
+            <small>Vælg en farve til visning i kalenderen</small>
+          </div>
+          <div class="form-actions">
+            <button id="create-machine-btn" class="primary-btn">
+              Opret maskine
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="edit-booking-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Redigér booking</h3>
+        <div class="edit-booking-form">
+          <div class="form-group">
+            <label for="edit-booking-start-date">Startdato</label>
+            <input type="date" id="edit-booking-start-date" />
+          </div>
+          <div class="form-group">
+            <label for="edit-booking-end-date">Slutdato</label>
+            <input type="date" id="edit-booking-end-date" />
+          </div>
+          <div class="form-group">
+            <label for="edit-booking-start-time">Starttidspunkt</label>
+            <select id="edit-booking-start-time">
+              <!-- Tidspunkter genereres dynamisk i JavaScript -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-booking-end-time">Sluttidspunkt</label>
+            <select id="edit-booking-end-time">
+              <!-- Tidspunkter genereres dynamisk i JavaScript -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-booking-project">Projekt</label>
+            <select id="edit-booking-project">
+              <option value="">Vælg projekt (valgfrit)</option>
+              <!-- Projekter genereres dynamisk i JavaScript -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-booking-description"
+              >Beskrivelse (hvis ikke til projekt)</label
+            >
+            <textarea
+              id="edit-booking-description"
+              placeholder="F.eks. vedligeholdelse, reparation osv."
+            ></textarea>
+          </div>
+          <div class="form-actions">
+            <button id="update-booking-btn" class="primary-btn">
+              Opdater booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/calendar.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
